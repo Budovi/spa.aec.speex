@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(spa-aec-speex LANGUAGES CXX)
+project(spa-aec-speex LANGUAGES C)
 
 include(GNUInstallDirs)
 find_package(PkgConfig REQUIRED)
@@ -7,15 +7,12 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(SPEEXDSP REQUIRED speexdsp)
 pkg_check_modules(LIBPIPEWIRE REQUIRED libpipewire-0.3)
 
-# aec-speex.c uses C++ syntax (variable declaration in if-condition)
-# and must be compiled as C++17.
 add_library(spa-aec-speex MODULE aec-speex.c)
-set_source_files_properties(aec-speex.c PROPERTIES LANGUAGE CXX)
 
 set_target_properties(spa-aec-speex PROPERTIES
     PREFIX "lib"
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED ON
+    C_STANDARD 99
+    C_STANDARD_REQUIRED ON
 )
 
 target_include_directories(spa-aec-speex PRIVATE

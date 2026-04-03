@@ -4,7 +4,7 @@ A [PipeWire SPA](https://docs.pipewire.org/page_spa.html) plugin that performs a
 
 ## Dependencies
 
-- [PipeWire](https://docs.pipewire.org/) ≥ 0.3 — provides the SPA plugin interface (`libpipewire-0.3`)
+- [PipeWire](https://docs.pipewire.org/) ≥ 0.3 — provides the SPA plugin interface and headers (`libpipewire-0.3`)
 - [SpeexDSP](https://gitlab.xiph.org/xiph/speexdsp) — provides echo cancellation and audio preprocessing (`speexdsp`)
 
 ### Relevant documentation
