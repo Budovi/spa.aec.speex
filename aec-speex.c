@@ -41,9 +41,8 @@ SPA_LOG_TOPIC_DEFINE_STATIC(log_topic, "spa.aec.speex");
 
 static bool speex_get_spa_bool(const struct spa_dict *args, const char *key, bool default_value)
 {
-	if (const char *str = spa_dict_lookup(args, key))
-		return spa_atob(str);
-	return default_value;
+	const char *str = spa_dict_lookup(args, key);
+	return str ? spa_atob(str) : default_value;
 }
 
 static uint32_t speex_get_spa_uint(struct spa_log *log,
