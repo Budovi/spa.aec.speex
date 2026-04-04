@@ -20,9 +20,9 @@ The code was inspired by the two existing AEC plugins in the PipeWire (WebRTC an
 
 ## Known issues
 
-* The monitor mode makes the "passive" mode ineffective, i.e. the AEC will run regardless of whether there is an app actually capturing the microphone audio. The monitor outputs seem to be enough to activate the processing.
+* The monitor mode makes the "passive" mode ineffective, e.g. the AEC will run regardless of whether there is an app actually capturing the microphone audio. The monitor outputs seem to be enough to activate the processing.
 * Voice activity detection options were kept in the code, but the Speex authors discourage its use. There is a lack of proper documentation about the issue, and I haven't experimented with it.
-* To remove echo from multiple microphone streams (i.e. when using a stereo microphone) with preprocessing enabled you need to run multiple instances of the plugin.
+* To remove echo from multiple microphone streams (e.g. when using a stereo microphone) with preprocessing enabled you need to run multiple instances of the plugin.
 
 ## Dependencies
 
@@ -76,7 +76,7 @@ The plugin is loaded by PipeWire's echo-cancel module. See `60-aec-speex.conf` f
 | `speex.preprocess.noise_suppress` | int (dB) | -15 *(library default)* | Noise suppression ceiling |
 | `speex.preprocess.dereverb` | bool | `false` | Enable dereverberation |
 
-The configuration needs to be placed to the PipeWire's configuration folder, typically `~/.config/pipewire/pipewire.conf.d/`. Don't forget to restart the daemon using `systemctl user --restart pipewire`. Inspect the output via `journalctl --user -u pipewire` if you encounter problems, and expect your audio to glitch out when restarting the PipeWire. I recommend [Helvum](https://gitlab.freedesktop.org/pipewire/helvum) patchbay for wiring inspection.
+The configuration needs to be placed to the PipeWire's configuration folder, typically `~/.config/pipewire/pipewire.conf.d/`. Don't forget to restart the daemon using `systemctl --user restart pipewire`. Inspect the output via `journalctl --user -u pipewire` if you encounter problems, and expect your audio to glitch out when restarting the PipeWire. I recommend [Helvum](https://gitlab.freedesktop.org/pipewire/helvum) patchbay for wiring inspection.
 
 ## License
 
