@@ -221,13 +221,13 @@ speex_init2(void *object,
 			impl->preprocess_state, SPEEX_PREPROCESS_SET_DENOISE, &enable_value);
 	}
 
-	// Automatic gain control
+	// Automatic gain control (always off)
 	enable_value = 2;
 	error_counter += speex_preprocess_ctl(
 		impl->preprocess_state, SPEEX_PREPROCESS_SET_AGC, &enable_value);
 
-	// Voice activity detector
-	/* if (speex_get_spa_bool(args, "speex.preprocess.voice_activity_detector", false)) {
+	// Voice activity detector (a "hack", according to the Speex DSP authors)
+	if (speex_get_spa_bool(args, "speex.preprocess.voice_activity_detector", false)) {
 		enable_value = 1;
 		error_counter += speex_preprocess_ctl(
 			impl->preprocess_state, SPEEX_PREPROCESS_SET_VAD, &enable_value);
@@ -250,10 +250,10 @@ speex_init2(void *object,
 		enable_value = 2;
 		error_counter += speex_preprocess_ctl(
 			impl->preprocess_state, SPEEX_PREPROCESS_SET_VAD, &enable_value);
-	}*/
+	}
 
 	// Dereverbiation
-	enable_value = speex_get_spa_bool(args, "speex.preprocess.dereverb", true) ? 1 : 2;
+	enable_value = speex_get_spa_bool(args, "speex.preprocess.dereverb", false) ? 1 : 2;
 	error_counter += speex_preprocess_ctl(
 		impl->preprocess_state, SPEEX_PREPROCESS_SET_DEREVERB, &enable_value);
 
