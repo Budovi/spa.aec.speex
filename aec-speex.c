@@ -273,7 +273,7 @@ speex_init(void *object, const struct spa_dict *args, const struct spa_audio_inf
 
 static void speex_copy_in(const float *src[], spx_int16_t *dst, uint32_t channels, uint32_t samples)
 {
-	const float factor = (float) INT16_MAX + 1;
+	const float factor = (float) INT16_MAX;
 	for (uint32_t sample = 0; sample < samples; sample++)
 		for (uint32_t channel = 0; channel < channels; channel++) {
 			dst[sample * channels + channel] = (spx_int16_t)(src[channel][sample] * factor);
@@ -282,7 +282,7 @@ static void speex_copy_in(const float *src[], spx_int16_t *dst, uint32_t channel
 
 static void speex_copy_out(const spx_int16_t *src, float *dst[], uint32_t channels, uint32_t samples)
 {
-	const float factor = (float) INT16_MAX + 1;
+	const float factor = (float) INT16_MAX;
 	for (uint32_t sample = 0; sample < samples; sample++)
 		for (uint32_t channel = 0; channel < channels; channel++) {
 			dst[channel][sample] = src[sample * channels + channel] / factor;
