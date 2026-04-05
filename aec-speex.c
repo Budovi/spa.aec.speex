@@ -123,8 +123,8 @@ speex_init2(void *object,
 	uint32_t filter_samples = frame_samples * (filter_length / frame_length);
 	uint32_t filter_delay = speex_get_spa_uint(impl->log, args, "speex.filter_delay", 20);
 
-	spa_log_warn(impl->log, "Picking frame length %" PRIu32 "ms (%" PRIu32 " samples), "
-				"filter length %" PRIu32 "ms, and filter delay %" PRIu32 "ms",
+	spa_log_warn(impl->log, "Picking frame length %" PRIu32 " ms (%" PRIu32 " samples), "
+				"filter length %" PRIu32 " ms, and filter delay %" PRIu32 " ms",
 		     frame_length, frame_samples, filter_length, filter_delay);
 	if (!filter_samples) {
 		spa_log_error(impl->log, "Error: The frame size must be non-zero");
@@ -296,7 +296,7 @@ speex_run(void *object, const float *rec[], const float *play[], float *out[], u
 	// Check that the number of samples is equal to the frame size
 	if (n_samples != impl->frame_size) {
 		spa_log_error(impl->log, "Error: The quantum must be set to match the frame size "
-					 "(%" PRIu32 ", got %" PRIu32 ")",
+					 "(expected %" PRIu32 ", got %" PRIu32 ")",
 			      impl->frame_size, n_samples);
 		return -EINVAL;
 	}
