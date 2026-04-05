@@ -384,7 +384,7 @@ impl_init(const struct spa_handle_factory *factory,
 		&impl_aec, impl);
 	impl->aec.name = "speex";
 	impl->aec.info = NULL;
-	impl->aec.latency = "480/48000";
+	impl->aec.latency = NULL;
 
 	impl->play_buffer = NULL;
 	impl->rec_buffer = NULL;
